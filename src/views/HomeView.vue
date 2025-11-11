@@ -101,6 +101,7 @@ import { RouterLink } from 'vue-router'
 .highlights__value {
   font-size: 1.5rem;
   font-weight: 600;
+  font-family: var(--font-accent);
 }
 
 .highlights__label {
