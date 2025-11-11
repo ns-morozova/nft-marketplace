@@ -68,7 +68,7 @@ img {
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 24px;
 
   @include respond-to(md) {
     max-width: 960px;

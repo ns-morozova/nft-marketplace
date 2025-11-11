@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
 
 <template>
   <header class="header">
-    <div class="headerInner container">
+    <div class="headerInner">
       <RouterLink to="/" class="brand">
         <img src="/public/logo.svg" />
         <span>NFT Marketplace</span>
@@ -147,8 +147,7 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 1.25rem;
+  padding: 15px 24px;
 }
 
 .brand {
@@ -161,30 +160,26 @@ onBeforeUnmount(() => {
 }
 
 .menuToggle {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
+  border: none;
   background-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   gap: 5px;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
   z-index: 21;
 }
 
 .menuToggle span {
   width: 18px;
-  height: 2px;
+  height: 1px;
   border-radius: 999px;
   background-color: var(--color-text);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .menuToggle.is-open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .menuToggle.is-open span:nth-child(2) {
@@ -206,7 +201,6 @@ onBeforeUnmount(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -227,12 +221,12 @@ onBeforeUnmount(() => {
   flex-direction: column;
   gap: 25px;
   align-items: center;
-  margin-bottom: 35px;
+  margin-bottom: 45px;
 }
 
 .navLink {
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 14px;
   transition: color 0.3s ease;
 
   &.is-active {
@@ -289,11 +283,11 @@ onBeforeUnmount(() => {
 
 @include respond-to(lg) {
   .headerInner {
-    padding: 1rem 1.5rem;
+    padding: 20px 48px;
   }
 
   .brand {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .menuToggle {
@@ -323,7 +317,7 @@ onBeforeUnmount(() => {
   }
 
   .navLink {
-    font-size: 0.95rem;
+    font-size: 16px;
   }
 
   .btnSign {
