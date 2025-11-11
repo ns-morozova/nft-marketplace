@@ -332,4 +332,10 @@ onBeforeUnmount(() => {
     margin-left: 20px;
   }
 }
+
+@include respond-to(xl) {
+  .headerInner {
+    padding: 20px 8px;
+  }
+}
 </style>
