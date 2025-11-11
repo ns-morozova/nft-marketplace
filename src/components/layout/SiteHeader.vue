@@ -3,6 +3,7 @@ import { onBeforeUnmount, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
 import { IoSunnySharp } from 'oh-vue-icons/icons'
+import Button from '@/components/ui/Button.vue'
 
 addIcons(IoSunnySharp)
 
@@ -100,7 +101,7 @@ onBeforeUnmount(() => {
         <span></span>
       </button>
       <div id="site-menu" class="menuPanel" :class="{ 'is-open': isMenuOpen }">
-        <nav class="navItems" aria-label="Main Menu">
+        <nav class="navItems" aria-label="Основное меню">
           <RouterLink to="/marketplace" class="navLink" :class="{ 'is-active': isActive('marketplace') }">
             Marketplace
           </RouterLink>
@@ -115,10 +116,7 @@ onBeforeUnmount(() => {
             Connect a wallet
           </RouterLink>
         </nav>
-        <button class="btnSign">
-          <img src="/icons/user.svg" />
-          <span>Sign Up</span>
-        </button>
+        <Button label="Sign Up" icon="user" variant="accent" />
         <button
           class="btnTheme"
           type="button"
@@ -240,18 +238,6 @@ onBeforeUnmount(() => {
   }
 }
 
-.btnSign {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background-color: var(--color-accent);
-  border: none;
-  border-radius: 20px;
-  padding: 14px 20px;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
 .btnTheme {
   width: 28px;
   aspect-ratio: 1;
@@ -264,7 +250,8 @@ onBeforeUnmount(() => {
   color: var(--color-text);
   border-radius: 999px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  margin-left: 0;
+  margin-top: 10px;
+  // margin-left: 0;
 
   // &:hover {
   //   background-color: var(--color-accent);
@@ -322,14 +309,9 @@ onBeforeUnmount(() => {
     font-size: 16px;
   }
 
-  .btnSign {
-    padding: 18px 30px;
-    font-size: 16px;
-    margin-bottom: 0;
-  }
-
   .btnTheme {
     margin-left: 20px;
+    margin-top: 0;
   }
 }
 
