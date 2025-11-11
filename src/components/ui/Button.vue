@@ -88,7 +88,7 @@ const handleClick = (event: MouseEvent) => {
   .button {
     gap: 12px;
     font-size: 16px;
-    padding: 18px 30px;
+    padding: 16px 30px;
   }
 }
 </style>

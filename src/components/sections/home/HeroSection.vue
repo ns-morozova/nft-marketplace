@@ -1,77 +1,132 @@
 <template>
   <section class="hero">
-    <div class="container">
-      <p class="hero__eyebrow">digital art drops</p>
-      <h1 class="hero__title">Discover digital art & Collect NFTs</h1>
-      <p class="hero__subtitle">
+    <div class="mainContent">
+      <h1 class="heroTitle">Discover digital art & Collect NFTs</h1>
+      <p class="heroDescription">
         NFT marketplace UI created with Anima for Figma. Collect, buy and sell art from more than 20k NFT artists.
       </p>
-      <div class="hero__actions">
-        <button class="hero__cta">Get Started</button>
-        <RouterLink to="/marketplace" class="hero__link">Marketplace</RouterLink>
+      <div class="heroActions onlyDesktop">
+        <Button label="Get Started" icon="user" variant="accent" />
+        <!-- <RouterLink to="/marketplace" class="hero__link">Marketplace</RouterLink> -->
       </div>
+    </div>
+
+    <article class="card">
+      <!-- <img src="/images/spaceWalking.png" /> -->
+      <div class="cardContent">
+        <h3>Space Walking</h3>
+        <span>Animakid</span>
+      </div>
+    </article>
+
+    <div class="heroActions onlyMobile">
+      <Button label="Get Started" icon="user" variant="accent" />
+      <!-- <RouterLink to="/marketplace" class="hero__link">Marketplace</RouterLink> -->
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+// import { RouterLink } from 'vue-router'
+import Button from '@/components/ui/Button.vue';
 </script>
 
 <style scoped lang="scss">
 @use '@/styles/mixins' as *;
 
 .hero {
-  padding: 3rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 0;
 }
 
-.hero__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.75rem;
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heroTitle {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+.heroDescription {
   color: var(--color-text-muted);
-  margin-bottom: 1rem;
 }
 
-.hero__title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  margin: 0 0 1rem;
-}
-
-.hero__subtitle {
-  margin: 0 0 1.5rem;
-  color: var(--color-text-muted);
-  max-width: 520px;
-}
-
-.hero__actions {
+.heroActions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.hero__cta {
-  border: none;
-  background-color: var(--color-accent);
-  color: #fff;
-  padding: 0.85rem 1.75rem;
-  border-radius: 999px;
+.onlyDesktop {
+  display: none;
 }
 
-.hero__link {
-  border-radius: 999px;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
+.card {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-image: url("/images/spaceWalking.png");
+  background-repeat: no-repeat;
+  background-position: 0 -50px;
+  background-size: cover;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-@include respond-to(md) {
+.cardContent {
+  background-color: #3B3B3B;
+  padding: 22px 20px;
+}
+
+// .hero__link {
+//   border-radius: 999px;
+//   padding: 0.75rem 1.5rem;
+//   border: 1px solid var(--color-border);
+//   color: var(--color-text);
+// }
+
+@include respond-to(lg) {
   .hero {
-    padding-top: 4rem;
+    flex-direction: row;
+    gap: 30px;
+    padding: 80px 0;
   }
 
-  .hero__title {
-    max-width: 640px;
+  .mainContent {
+    width: 50%;
+    gap: 20px;
+  }
+
+  .heroTitle {
+    font-size: 38px;
+  }
+
+  .onlyDesktop {
+    display: block;
+  }
+
+  .onlyMobile {
+    display: none;
+  }
+
+  .card {
+    width: 50%;
+  }
+}
+
+@include respond-to(xl) {
+  .heroTitle {
+    font-size: 68px;
+    line-height: 1.1;
   }
 }
 </style>
