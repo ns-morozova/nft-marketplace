@@ -26,7 +26,7 @@ const toggleTheme = () => {
 <template>
   <div class="layout">
     <SiteHeader :theme="theme" @toggle-theme="toggleTheme" />
-    <main class="layout__content">
+    <main class="layoutContent">
       <slot />
     </main>
     <SiteFooter />
@@ -45,14 +45,16 @@ const toggleTheme = () => {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.layout__content {
+.layoutContent {
   flex: 1;
-  padding: 1.5rem 1.25rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
-@include respond-to(md) {
-  .layout__content {
-    padding: 2.5rem 2rem;
+@include respond-to(lg) {
+  .layoutContent {
+    padding: 0 52px;
   }
 }
 </style>
