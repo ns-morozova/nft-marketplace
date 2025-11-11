@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
 import { IoSunnySharp } from 'oh-vue-icons/icons'
@@ -13,8 +12,6 @@ const emit = defineEmits<{ toggleTheme: [] }>()
 
 const route = useRoute()
 
-// const themeLabel = computed(() => (props.theme === 'dark' ? 'Light mode' : 'Dark mode'))
-
 const isActive = (name: string) => route.name === name
 
 const handleToggle = () => emit('toggleTheme')
@@ -22,29 +19,31 @@ const handleToggle = () => emit('toggleTheme')
 
 <template>
   <header class="header">
-    <div class="header__inner container">
-      <RouterLink to="/" class="header__brand">
+    <div class="headerInner container">
+      <RouterLink to="/" class="brand">
         <img src="/public/logo.svg" />
         <span>NFT Marketplace</span>
       </RouterLink>
-      <nav class="header__nav" aria-label="Основное меню">
-        <!-- <RouterLink to="/" class="header__link" :class="{ 'is-active': isActive('home') }">
-          Main
-        </RouterLink> -->
-        <RouterLink to="/marketplace" class="header__link" :class="{ 'is-active': isActive('marketplace') }">
-          Marketplace
-        </RouterLink>
-        <RouterLink to="/rankings" class="header__link" :class="{ 'is-active': isActive('rankings') }">
-          Rankings
-        </RouterLink>
-        <RouterLink to="/connect-wallet" class="header__link" :class="{ 'is-active': isActive('connect-wallet') }">
-          Connect a wallet
-        </RouterLink>
-      </nav>
-      <button class="header__theme-btn" type="button" :aria-pressed="props.theme === 'light'" @click="handleToggle">
-        <!-- {{ themeLabel }} -->
-        <OhVueIcon name="io-sunny-sharp" class="header__theme-icon" aria-hidden="true" />
-      </button>
+      <div class="mainMenu">
+        <nav class="navItems" aria-label="Основное меню">
+          <RouterLink to="/marketplace" class="navLink" :class="{ 'is-active': isActive('marketplace') }">
+            Marketplace
+          </RouterLink>
+          <RouterLink to="/rankings" class="navLink" :class="{ 'is-active': isActive('rankings') }">
+            Rankings
+          </RouterLink>
+          <RouterLink to="/connect-wallet" class="navLink" :class="{ 'is-active': isActive('connect-wallet') }">
+            Connect a wallet
+          </RouterLink>
+        </nav>
+        <button class="btnSign">
+          <img src="/icons/user.svg" />
+          <span>Sign Up</span>
+        </button>
+        <button class="btnTheme" type="button" :aria-pressed="props.theme === 'light'" @click="handleToggle">
+          <OhVueIcon name="io-sunny-sharp" class="iconTheme" aria-hidden="true" />
+        </button>
+      </div>
     </div>
   </header>
 </template>
@@ -60,7 +59,7 @@ const handleToggle = () => emit('toggleTheme')
   z-index: 10;
 }
 
-.header__inner {
+.headerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +67,7 @@ const handleToggle = () => emit('toggleTheme')
   padding: 1rem 1.5rem;
 }
 
-.header__brand {
+.brand {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -76,16 +75,23 @@ const handleToggle = () => emit('toggleTheme')
   letter-spacing: 0.08em;
 }
 
-.header__nav {
+.mainMenu {
+  display: flex;
+  align-items: center;
+  // gap: 50px;
+}
+
+.navItems {
   display: none;
-  gap: 1.25rem;
+  gap: 50px;
+  margin-right: 50px;
 
   @include respond-to(md) {
-    display: inline-flex;
+    display: flex;
   }
 }
 
-.header__link {
+.navLink {
   color: var(--color-text-muted);
   font-size: 0.95rem;
   transition: color 0.2s ease;
@@ -99,7 +105,17 @@ const handleToggle = () => emit('toggleTheme')
   }
 }
 
-.header__theme-btn {
+.btnSign {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: 20px;
+  padding: 18px 30px;
+}
+
+.btnTheme {
   width: 28px;
   aspect-ratio: 1;
   flex-shrink: 0;
@@ -111,6 +127,7 @@ const handleToggle = () => emit('toggleTheme')
   color: var(--color-text);
   border-radius: 999px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-left: 20px;
 
   // &:hover {
   //   background-color: var(--color-accent);
@@ -119,7 +136,7 @@ const handleToggle = () => emit('toggleTheme')
   // }
 }
 
-.header__theme-icon {
+.iconTheme {
   width: 16px;
   height: 16px;
   // width: 1.1rem;
