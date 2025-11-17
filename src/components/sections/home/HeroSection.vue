@@ -1,25 +1,25 @@
 <template>
   <section class="hero">
-    <div class="mainContent">
-      <h1 class="heroTitle">Discover digital art & Collect NFTs</h1>
-      <p class="heroDescription">
+    <div class="hero__content">
+      <h1 class="hero__title">Discover digital art & Collect NFTs</h1>
+      <p class="hero__description">
         NFT marketplace UI created with Anima for Figma. Collect, buy and sell art from more than 20k NFT artists.
       </p>
-      <div class="heroActions onlyDesktop">
+      <div class="hero__actions hero__actions--desktop">
         <Button label="Get Started" icon="user" variant="accent" />
         <!-- <RouterLink to="/marketplace" class="hero__link">Marketplace</RouterLink> -->
       </div>
     </div>
 
-    <article class="card">
+    <article class="hero__card">
       <!-- <img src="/images/spaceWalking.png" /> -->
-      <div class="cardContent">
+      <div class="hero__card-content">
         <h3>Space Walking</h3>
         <span>Animakid</span>
       </div>
     </article>
 
-    <div class="heroActions onlyMobile">
+    <div class="hero__actions hero__actions--mobile">
       <Button label="Get Started" icon="user" variant="accent" />
       <!-- <RouterLink to="/marketplace" class="hero__link">Marketplace</RouterLink> -->
     </div>
@@ -41,34 +41,34 @@ import Button from '@/components/ui/Button.vue';
   padding: 40px 0;
 }
 
-.mainContent {
+.hero__content {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.heroTitle {
+.hero__title {
   font-size: 28px;
   font-weight: 600;
   line-height: 1.4;
   text-transform: capitalize;
 }
 
-.heroDescription {
+.hero__description {
   color: var(--color-text-muted);
 }
 
-.heroActions {
+.hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.onlyDesktop {
+.hero__actions--desktop {
   display: none;
 }
 
-.card {
+.hero__card {
   width: 100%;
   aspect-ratio: 1;
   display: flex;
@@ -80,10 +80,11 @@ import Button from '@/components/ui/Button.vue';
   background-size: cover;
   border-radius: 20px;
   overflow: hidden;
+
 }
 
-.cardContent {
-  background-color: #3B3B3B;
+.hero__card-content {
+  background-color: #3b3b3b;
   padding: 22px 20px;
 }
 
@@ -101,30 +102,30 @@ import Button from '@/components/ui/Button.vue';
     padding: 80px 0;
   }
 
-  .mainContent {
+  .hero__content {
     width: 50%;
     gap: 20px;
   }
 
-  .heroTitle {
+  .hero__title {
     font-size: 38px;
   }
 
-  .onlyDesktop {
+  .hero__actions--desktop {
     display: block;
   }
 
-  .onlyMobile {
+  .hero__actions--mobile {
     display: none;
   }
 
-  .card {
+  .hero__card {
     width: 50%;
   }
 }
 
 @include respond-to(xl) {
-  .heroTitle {
+  .hero__title {
     font-size: 68px;
     line-height: 1.1;
   }

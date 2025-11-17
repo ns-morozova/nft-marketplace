@@ -3,10 +3,10 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="footer">
-    <div class="footerInner">
-      <p class="footerCopy">Ⓒ {{ currentYear }} NFT Market</p>
-      <p class="footerNote">Use this template freely.</p>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">Ⓒ {{ currentYear }} NFT Market</p>
+      <p class="site-footer__note">Use this template freely.</p>
     </div>
   </footer>
 </template>
@@ -14,12 +14,12 @@ const currentYear = new Date().getFullYear()
 <style scoped lang="scss">
 @use '@/styles/mixins' as *;
 
-.footer {
+.site-footer {
   border-top: 1px solid var(--color-border);
   background-color: var(--color-surface);
 }
 
-.footerInner {
+.site-footer__inner {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
@@ -28,8 +28,15 @@ const currentYear = new Date().getFullYear()
   padding: 15px 30px;
   font-size: 0.9rem;
   color: var(--color-text-muted);
+}
 
-  @include respond-to(lg) {
+.site-footer__copy,
+.site-footer__note {
+  margin: 0;
+}
+
+@include respond-to(lg) {
+  .site-footer__inner {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -37,13 +44,8 @@ const currentYear = new Date().getFullYear()
   }
 }
 
-.footerCopy,
-.footerNote {
-  margin: 0;
-}
-
 // @include respond-to(lg) {
-//   .footerInner {
+//   .site-footer__inner {
 //     flex-direction: row;
 //     justify-content: space-between;
 //     align-items: center;

@@ -80,17 +80,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="header">
-    <div class="headerInner">
-      <RouterLink to="/" class="brand">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <RouterLink to="/" class="site-header__brand">
         <img src="/public/logo.svg" />
         <span>NFT Marketplace</span>
       </RouterLink>
       
       <button
-        class="menuToggle"
+        class="site-header__menu-toggle"
         type="button"
-        :class="{ 'is-open': isMenuOpen }"
+        :class="{ 'site-header__menu-toggle--open': isMenuOpen }"
         :aria-expanded="isMenuOpen ? 'true' : 'false'"
         aria-label="Toggle navigation"
         aria-controls="site-menu"
@@ -100,30 +100,42 @@ onBeforeUnmount(() => {
         <span></span>
         <span></span>
       </button>
-      <div id="site-menu" class="menuPanel" :class="{ 'is-open': isMenuOpen }">
-        <nav class="navItems" aria-label="Основное меню">
-          <RouterLink to="/marketplace" class="navLink" :class="{ 'is-active': isActive('marketplace') }">
+      <div
+        id="site-menu"
+        class="site-header__menu-panel"
+        :class="{ 'site-header__menu-panel--open': isMenuOpen }"
+      >
+        <nav class="site-header__nav" aria-label="Основное меню">
+          <RouterLink
+            to="/marketplace"
+            class="site-header__nav-link"
+            :class="{ 'site-header__nav-link--active': isActive('marketplace') }"
+          >
             Marketplace
           </RouterLink>
-          <RouterLink to="/rankings" class="navLink" :class="{ 'is-active': isActive('rankings') }">
+          <RouterLink
+            to="/rankings"
+            class="site-header__nav-link"
+            :class="{ 'site-header__nav-link--active': isActive('rankings') }"
+          >
             Rankings
           </RouterLink>
           <RouterLink
             to="/connect-wallet"
-            class="navLink"
-            :class="{ 'is-active': isActive('connect-wallet') }"
+            class="site-header__nav-link"
+            :class="{ 'site-header__nav-link--active': isActive('connect-wallet') }"
           >
             Connect a wallet
           </RouterLink>
         </nav>
         <Button label="Sign Up" icon="user" variant="accent" />
         <button
-          class="btnTheme"
+          class="site-header__theme-btn"
           type="button"
           :aria-pressed="props.theme === 'light' ? 'true' : 'false'"
           @click="handleToggle"
         >
-          <OhVueIcon name="io-sunny-sharp" class="iconTheme" aria-hidden="true" />
+          <OhVueIcon name="io-sunny-sharp" class="site-header__theme-icon" aria-hidden="true" />
         </button>
       </div>
     </div>
@@ -133,7 +145,7 @@ onBeforeUnmount(() => {
 <style scoped lang="scss">
 @use '@/styles/mixins' as *;
 
-.header {
+.site-header {
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
@@ -141,7 +153,7 @@ onBeforeUnmount(() => {
   z-index: 10;
 }
 
-.headerInner {
+.site-header__inner {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
@@ -150,7 +162,7 @@ onBeforeUnmount(() => {
   padding: 15px 24px;
 }
 
-.brand {
+.site-header__brand {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -159,7 +171,7 @@ onBeforeUnmount(() => {
   letter-spacing: 0.08em;
 }
 
-.menuToggle {
+.site-header__menu-toggle {
   border: none;
   background-color: transparent;
   display: flex;
@@ -170,7 +182,7 @@ onBeforeUnmount(() => {
   z-index: 21;
 }
 
-.menuToggle span {
+.site-header__menu-toggle span {
   width: 18px;
   height: 1px;
   border-radius: 999px;
@@ -178,19 +190,19 @@ onBeforeUnmount(() => {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.menuToggle.is-open span:nth-child(1) {
+.site-header__menu-toggle--open span:nth-child(1) {
   transform: translateY(5px) rotate(45deg);
 }
 
-.menuToggle.is-open span:nth-child(2) {
+.site-header__menu-toggle--open span:nth-child(2) {
   opacity: 0;
 }
 
-.menuToggle.is-open span:nth-child(3) {
+.site-header__menu-toggle--open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.menuPanel {
+.site-header__menu-panel {
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -209,14 +221,14 @@ onBeforeUnmount(() => {
   z-index: 20;
 }
 
-.menuPanel.is-open {
+.site-header__menu-panel--open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-.navItems {
+.site-header__nav {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -224,12 +236,12 @@ onBeforeUnmount(() => {
   margin-bottom: 45px;
 }
 
-.navLink {
+.site-header__nav-link {
   color: var(--color-text-muted);
   font-size: 14px;
   transition: color 0.3s ease;
 
-  &.is-active {
+  &.site-header__nav-link--active {
     color: var(--color-text);
   }
 
@@ -238,7 +250,7 @@ onBeforeUnmount(() => {
   }
 }
 
-.btnTheme {
+.site-header__theme-btn {
   width: 28px;
   aspect-ratio: 1;
   flex-shrink: 0;
@@ -260,30 +272,30 @@ onBeforeUnmount(() => {
   // }
 }
 
-.iconTheme {
+.site-header__theme-icon {
   width: 16px;
   height: 16px;
   transition: transform 0.25s ease;
 }
 
-:global([data-theme='light']) .header {
+:global([data-theme='light']) .site-header {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 @include respond-to(lg) {
-  .headerInner {
+  .site-header__inner {
     padding: 20px 48px;
   }
 
-  .brand {
+  .site-header__brand {
     font-size: 16px;
   }
 
-  .menuToggle {
+  .site-header__menu-toggle {
     display: none;
   }
 
-  .menuPanel {
+  .site-header__menu-panel {
     position: static;
     width: auto;
     height: auto;
@@ -298,25 +310,25 @@ onBeforeUnmount(() => {
     transform: none;
   }
 
-  .navItems {
+  .site-header__nav {
     flex-direction: row;
     gap: 50px;
     margin-right: 50px;
     margin-bottom: 0;
   }
 
-  .navLink {
+  .site-header__nav-link {
     font-size: 16px;
   }
 
-  .btnTheme {
+  .site-header__theme-btn {
     margin-left: 20px;
     margin-top: 0;
   }
 }
 
 @include respond-to(xl) {
-  .headerInner {
+  .site-header__inner {
     padding: 20px 8px;
   }
 }
