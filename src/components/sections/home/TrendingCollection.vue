@@ -9,6 +9,7 @@
       <CardCollection
         v-for="collection in trendingCollections"
         :key="collection.id"
+        class="trending__card"
         :main-image="collection.mainImage"
         :thumb-images="collection.thumbImages"
         :more-text="collection.moreText"
@@ -87,6 +88,14 @@ const trendingCollections: TrendingCollectionCard[] = [
   grid-template-columns: repeat(1, 1fr);
 }
 
+.trending__card {
+  display: none;
+}
+
+.trending__card:nth-child(-n + 1) {
+  display: flex;
+}
+
 @include respond-to(md) {
   .trending {
     padding: 80px 0;
@@ -95,11 +104,19 @@ const trendingCollections: TrendingCollectionCard[] = [
   .trending__cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .trending__card:nth-child(-n + 2) {
+    display: flex;
+  }
 }
 
 @include respond-to(xl) {
   .trending__cards {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .trending__card:nth-child(-n + 3) {
+    display: flex;
   }
 }
 </style>
