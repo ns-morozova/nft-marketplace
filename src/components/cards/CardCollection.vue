@@ -1,26 +1,42 @@
+<script setup lang="ts">
+type CardCollectionProps = {
+  mainImage: string
+  thumbImages: [string, string]
+  moreText: string
+  title: string
+  avatarImage: string
+  authorName: string
+}
+
+defineProps<CardCollectionProps>()
+</script>
+
 <template>
-    <article class="card">
-        <div class="card__main-img">
-            <img src="/images/cardCollectionMain1.png" alt="Main Image" />
-        </div>
+  <article class="card">
+    <div class="card__main-img">
+      <img :src="mainImage" :alt="`${title} main image`" />
+    </div>
 
-        <div class="card__thumbs">
-            <img src="/images/cardCollectionExtra1_1.png" alt="Image" />
-            <img src="/images/cardCollectionExtra1_2.png" alt="Image" />
-            <div class="card__more">1025+</div>
-        </div>
+    <div class="card__thumbs">
+      <img
+        v-for="(thumbImage, index) in thumbImages"
+        :key="`${thumbImage}-${index}`"
+        :src="thumbImage"
+        :alt="`${title} thumbnail ${index + 1}`"
+      />
+      <div class="card__more">{{ moreText }}</div>
+    </div>
 
-        <div class="card__info">
-            <h3>DSGN Animals</h3>
-            <div class="card__author">
-                <div class="card__author-avatar">
-                    <img src="/images/avatarDefault.png" alt="Avatar" />
-                </div>
-                <span>MrFox</span>
-            </div>
+    <div class="card__info">
+      <h3>{{ title }}</h3>
+      <div class="card__author">
+        <div class="card__author-avatar">
+          <img :src="avatarImage" :alt="authorName" />
         </div>
-        
-    </article>
+        <span>{{ authorName }}</span>
+      </div>
+    </div>
+  </article>
 </template>
 
 <style scoped lang="scss">
@@ -96,4 +112,3 @@
     }
 }
 </style>
-  
