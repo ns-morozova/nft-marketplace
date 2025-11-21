@@ -4,12 +4,15 @@
       text="Trending Collection"
       extra-class="trending__title"
     />
-    <p class="trending__subtitle">Checkout our weekly updated trending collection.</p>
+    <Text
+      value="Checkout our weekly updated trending collection."
+    />
   </section>
 </template>
 
 <script setup lang="ts">
 import HeadingH2 from '@/components/ui/HeadingH2.vue'
+import Text from '@/components/ui/Text.vue'
 </script>
 
 <style scoped lang="scss">
